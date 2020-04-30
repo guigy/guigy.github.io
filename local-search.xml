@@ -4,13 +4,29 @@
   
   
   <entry>
-    <title>TEST</title>
-    <link href="/2020/05/01/TEST/"/>
-    <url>/2020/05/01/TEST/</url>
+    <title>[转]经典面试题：青蛙跳台阶</title>
+    <link href="/2020/04/30/TEST/"/>
+    <url>/2020/04/30/TEST/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>一只青蛙一次可以跳上 1 级台阶，也可以跳上 2 级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>首先跳到 n 级台阶可以分解为两种情况：</p><p>之前跳到 n-1 级台阶，然后再跳 1 级到达 n 级；<br>之前跳到 n-2 级台阶，然后再跳 2 级到达 n 级；<br>因此 n 级跳法数量，等于这两种情况之和。<br>即 F(n) = F(n-1) + F(n-2)</p><p>同理可继续推导：</p><pre><code class="hljs plain">F(n-1) &#x3D; F(n-2) + F(n-3)F(n-2) &#x3D; F(n-3) + F(n-4)…F(2) &#x3D; F(1) + F(0)F(1) &#x3D; 1F(0) &#x3D; 1</code></pre><p>可见这是斐波那契数列，数列中从第三个数开始，每个数都是前两个数之和。那么只需从 F(0) + F(1) = F(2) 开始计算，一直加到 F(n) 即可得出结果。</p><h4 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h4><p>Golang 版</p><pre><code class="hljs plain">func JumpFloor(n int) int &#123;    a, b :&#x3D; 1, 1    for ; n &gt; 0; n-- &#123;          a, b &#x3D; b, a + b    &#125;      return a&#125;</code></pre><p>Python 版</p><pre><code class="hljs plain">def jump_floor(n):    a, b &#x3D; 1, 1    for _ in range(n):        a, b &#x3D; b, a + b    return a</code></pre>]]></content>
     
     
+    <categories>
+      
+      <category>面试</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>go</tag>
+      
+      <tag>python</tag>
+      
+      <tag>面试</tag>
+      
+    </tags>
     
   </entry>
   
